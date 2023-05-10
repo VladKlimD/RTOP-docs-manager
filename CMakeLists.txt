@@ -9,15 +9,32 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Sql)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Sql)
+
+# Путь к папке с базой данных
+set(OBJECTS_DATABASE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ObjectsDataBase)
+# Путь к папке с иконками
+set(ICONS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/icons)
+
+# Копирование папок в бинарную директорию
+file(COPY ${OBJECTS_DATABASE_DIR} DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY ${ICONS_DIR} DESTINATION ${CMAKE_BINARY_DIR})
 
 set(PROJECT_SOURCES
-        ./src/main.cpp
-        ./src/mainwindow.cpp
-        ./src/mainwindow.h
-        ./src/mainwindow.ui
-        ./src/style.hpp
+        src/main.cpp
+        src/mainwindow.cpp
+        src/mainwindow.h
+        src/mainwindow.ui
+        src/style.hpp
+        src/ObjectsDataBase.h
+        src/ObjectsDataBase.cpp
+        src/TechInfo.h
+        src/TechInfo.cpp
+        src/TechInfo.ui
+        src/LogBooks.h
+        src/LogBooks.cpp
+        src/LogBooks.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -37,7 +54,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(RTOP-docs-manager PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(RTOP-docs-manager PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Sql)
 
 set_target_properties(RTOP-docs-manager PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
