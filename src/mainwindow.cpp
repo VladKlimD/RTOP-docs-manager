@@ -15,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
     setStatusBar(m_statusBar);
     m_ui->verticalLayout_3->setContentsMargins(0, 0, 0, 0);
     m_ui->verticalLayout_3->setAlignment(Qt::AlignTop);
-    m_ui->horizontalLayout->setAlignment(Qt::AlignLeft);
 
     m_objectNames = m_objectsDataBase->getObjectNames();
     m_ui->comboBoxObjectList->addItems(m_objectNames.values());
@@ -25,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_ui->stackedWidget->addWidget(m_logBooks);
     m_ui->stackedWidget->addWidget(m_techInfo);
+
+
 
     connect(m_objectsDataBase, &ObjectsDataBase::signal_messageToStatusBar,
             this, &MainWindow::slot_putMessageToStatusBar);
