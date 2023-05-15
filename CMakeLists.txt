@@ -35,6 +35,9 @@ set(PROJECT_SOURCES
         src/LogBooks.h
         src/LogBooks.cpp
         src/LogBooks.ui
+        src/DataBaseEditor.h
+        src/DataBaseEditor.cpp
+        src/DataBaseEditor.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

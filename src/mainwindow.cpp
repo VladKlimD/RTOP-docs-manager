@@ -20,11 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
     m_ui->comboBoxObjectList->addItems(m_objectNames.values());
     setComboBoxItemMargin(m_ui->comboBoxObjectList, 5);
 
-    m_ui->verticalSpacerTop->changeSize(0, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
-    m_ui->verticalSpacerBottom->changeSize(0, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+    slot_setStackedWidgetOnCenter();
 
     m_ui->stackedWidget->addWidget(m_logBooks);
     m_ui->stackedWidget->addWidget(m_techInfo);
+    m_ui->stackedWidget->addWidget(m_dataBaseEditor);
 }
 
 MainWindow::~MainWindow()
@@ -34,17 +34,26 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButtonToMainPage_clicked()
 {
+    slot_setStackedWidgetOnCenter();
     m_ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::on_pushButtonLogBooks_clicked()
 {
+    slot_setStackedWidgetOnTop();
     m_ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_pushButtonTechInfo_clicked()
 {
+    slot_setStackedWidgetOnTop();
     m_ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_pushButtonEditDataBase_clicked()
+{
+    slot_setStackedWidgetOnTop();
+    m_ui->stackedWidget->setCurrentIndex(3);
 }
 
 void MainWindow::on_comboBoxObjectList_activated(int index)
@@ -59,8 +68,21 @@ void MainWindow::on_comboBoxObjectList_currentIndexChanged(int index)
     m_techInfo->setObjectIndex(index);
 }
 
+void MainWindow::slot_setStackedWidgetOnTop()
+{
+    m_ui->verticalSpacerTop->changeSize(0, 20, QSizePolicy::Maximum, QSizePolicy::Maximum);
+    m_ui->verticalSpacerBottom->changeSize(0, 20, QSizePolicy::Maximum, QSizePolicy::Maximum);
+}
+
+void MainWindow::slot_setStackedWidgetOnCenter()
+{
+    m_ui->verticalSpacerTop->changeSize(0, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+    m_ui->verticalSpacerBottom->changeSize(0, 20, QSizePolicy::Minimum, QSizePolicy::Expanding);
+}
+
 void MainWindow::setComboBoxItemMargin(QComboBox *cb, int m)
 {
     cb->setItemDelegate(new QStyledItemDelegate(cb));
     cb->setStyleSheet(QString("QListView::item { margin: %1px }").arg(m));
 }
+

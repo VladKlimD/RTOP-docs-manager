@@ -13,11 +13,8 @@ QMap<int, QString> ObjectsDataBase::getObjectNames()
     db.setDatabaseName("./ObjectsDataBase/objectsDataBase.db");
 
     if (!db.open()) {
-        //emit signal_messageToStatusBar("Ошибка подключения к базе данных ObjectsDataBase/objectsDataBase.db");
         return QMap<int, QString>();
     }
-
-    //emit signal_messageToStatusBar("Успешное подключение к базе данных ObjectsDataBase/objectsDataBase.db");
 
     QSqlQuery query("SELECT id, name FROM objectsNames", db);
     QMap<int, QString> objectMap;
@@ -57,4 +54,27 @@ QString ObjectsDataBase::getObjectInfo(int index, QString tableName)
     }
 
     return description;
+}
+
+QStringList ObjectsDataBase::getTableNames()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("./ObjectsDataBase/objectsDataBase.db");
+
+    if (!db.open()) {
+        return QStringList();
+    }
+
+    QSqlQuery query(db);
+    query.exec("SELECT name FROM sqlite_master WHERE type='table'");
+
+    QStringList tableNames;
+    while (query.next())
+    {
+        QString tableName = query.value(0).toString();
+        if (tableName != "objectsNames")
+            tableNames.append(tableName);
+    }
+
+    return tableNames;
 }

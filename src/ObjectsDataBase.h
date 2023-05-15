@@ -16,6 +16,7 @@ public:
 
     QMap<int, QString> getObjectNames();
     QString getObjectInfo(int index, QString tableName);
+    QStringList getTableNames();
 
 signals:
     void signal_messageToStatusBar(QString);

@@ -1,14 +1,15 @@
 #include "LogBooks.h"
 #include "ui_LogBooks.h"
 
-LogBooks::LogBooks(QWidget *parent) :
+LogBooks::LogBooks(ObjectsDataBase *objectsDataBase, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::LogBooks)
+    m_ui(new Ui::LogBooks)
 {
-    ui->setupUi(this);
+    m_ui->setupUi(this);
+    m_objectsDataBase = objectsDataBase;
 }
 
 LogBooks::~LogBooks()
 {
-    delete ui;
+    delete m_ui;
 }
