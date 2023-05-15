@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStatusBar>
+#include <QComboBox>
 
 #include "ObjectsDataBase.h"
 #include "TechInfo.h"
@@ -20,9 +21,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:    
-    void slot_putMessageToStatusBar(QString);
-
+private slots:
     void on_pushButtonTechInfo_clicked();
     void on_comboBoxObjectList_activated(int index);
     void on_pushButtonLogBooks_clicked();
@@ -31,10 +30,12 @@ private slots:
 
 private:
     Ui::MainWindow *m_ui;
-    QStatusBar *m_statusBar = new QStatusBar(this);
+
     ObjectsDataBase *m_objectsDataBase = new ObjectsDataBase(this);
-    TechInfo *m_techInfo = new TechInfo(this);
+    TechInfo *m_techInfo = new TechInfo(m_objectsDataBase, this);
     LogBooks *m_logBooks = new LogBooks(this);
     QMap<int, QString> m_objectNames;
+
+    void setComboBoxItemMargin(QComboBox* cb, int m);
 };
 #endif // MAINWINDOW_H

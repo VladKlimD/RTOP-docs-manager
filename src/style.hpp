@@ -598,7 +598,7 @@ QTreeView::branch:open:has-children:has-siblings
 
 
 /*-----QListView-----*/
-QListView
+/*QListView
 {
     background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(83, 83, 83, 255),stop:0.293269 rgba(81, 81, 81, 255),stop:0.634615 rgba(79, 79, 79, 255),stop:1 rgba(83, 83, 83, 255));
     border : none;
@@ -622,7 +622,7 @@ QListView::disabled
 QListView::item
 {
     background-color: #2d2d2d;
-    padding: 1px;
+    padding: 15px;
 
 }
 
@@ -666,7 +666,7 @@ QListView::item:hover {
     border: none;
     color: white;
 
-}
+}*/
 
 
 /*-----QCheckBox-----*/
