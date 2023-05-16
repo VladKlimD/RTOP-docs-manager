@@ -25,8 +25,11 @@
      <property name="title">
       <string/>
      </property>
-     <layout class="QGridLayout" name="gridLayout_7">
-      <item row="0" column="0">
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
        <widget class="QLabel" name="labelFastLinks_2">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -83,8 +86,11 @@
         <property name="title">
          <string/>
         </property>
-        <layout class="QGridLayout" name="gridLayout_9">
-         <item row="0" column="0">
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
           <widget class="QLabel" name="labelTechService">
            <property name="text">
             <string>ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ</string>
@@ -104,8 +110,11 @@
         <property name="title">
          <string/>
         </property>
-        <layout class="QGridLayout" name="gridLayout_10">
-         <item row="0" column="0">
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
           <widget class="QLabel" name="labelFaultsAndFixes">
            <property name="text">
             <string>НЕИСПРАВНОСТИ ПО СИСТЕМАМ И СПОСОБЫ ИХ УСТРАНЕНИЯ</string>
@@ -129,13 +138,16 @@
      <property name="title">
       <string/>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
      <layout class="QGridLayout" name="gridLayout_6">
       <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QScrollArea" name="scrollArea">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -155,7 +167,7 @@
              <x>0</x>
              <y>0</y>
              <width>274</width>
-             <height>86</height>
+             <height>174</height>
             </rect>
            </property>
            <property name="sizePolicy">
@@ -174,7 +186,7 @@
             <item row="0" column="0">
              <widget class="QTextEdit" name="textEditObjectInfo">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>

@@ -10,6 +10,14 @@
 #include "LogBooks.h"
 #include "DataBaseEditor.h"
 
+enum StackedWidgetPages
+{
+    MainPage = 0,
+    LogBooksPage,
+    TechInfoPage,
+    EditDataBasePage
+};
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -22,6 +30,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+
+
 private slots:
     void on_pushButtonTechInfo_clicked();
     void on_comboBoxObjectList_activated(int index);
@@ -32,6 +43,7 @@ private slots:
 
     void slot_setStackedWidgetOnTop();
     void slot_setStackedWidgetOnCenter();
+    void slot_setStackedWidgetIndex(StackedWidgetPages currentIndex);
 
 private:
     Ui::MainWindow *m_ui;
